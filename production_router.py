@@ -8,6 +8,8 @@ CHECKS = [
     "native_text_editable",
     "final_full_page_visual_check",
     "revision_source_binding",
+    "approved_style_match",
+    "section_page_coverage",
 ]
 
 
@@ -138,6 +140,18 @@ def choose_route(payload, policy=None):
         "provisional": provisional,
         "warnings": warnings,
         "requires_scope_decision": requires_scope_decision,
+        "production_guidance": {
+            "quality_target": "满足客户用途与已认可参考风格；价格不作为审美上限",
+            "sample_first": "先做封面和一页代表性内容；密集页或互动页按需追加，确认后扩展",
+            "value_add": "允许低边际成本的封面精修、统一配色、情境插画复用和重点页图解；不自动加页或追加承诺",
+            "execution": (
+                "优先网页样稿协作、复用已认可素材与原生版式、局部改稿；省Token不简化已确认风格"
+                if route == "economy" else
+                "同样先锁定样稿；按需求追加定制叙事、独立插画或复杂图表，并记录投入"
+            ),
+            "sample_skill": ".agents/skills/delegate-to-chatgpt-pro/SKILL.md#ppt样稿协作",
+            "cost_evidence": "分别记录Codex用量、网页用量、人工分钟和返工；未知留空，不推断两路线成本相同",
+        },
         "checks": {
             "economy": list(CHECKS),
             "quality": list(CHECKS),

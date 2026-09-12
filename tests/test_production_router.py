@@ -18,6 +18,14 @@ def payload(**changes):
 
 
 class ProductionRouterTests(unittest.TestCase):
+    def test_low_price_preserves_quality_target_but_changes_effort(self):
+        low=choose_route(payload(unit_price='1',price_evidence='已确认'))
+        high=choose_route(payload(unit_price='12',price_evidence='已确认'))
+        self.assertEqual(low['production_guidance']['quality_target'],high['production_guidance']['quality_target'])
+        self.assertEqual(low['production_guidance']['sample_first'],high['production_guidance']['sample_first'])
+        self.assertEqual(low['checks'],high['checks'])
+        self.assertNotEqual(low['production_guidance']['execution'],high['production_guidance']['execution'])
+
     def test_local_review_missing_evidence_and_unknown_scope(self):
         self.assertTrue(choose_route(payload(unit_price='4'))['provisional'])
         self.assertFalse(choose_route(payload(unit_price='4',price_evidence='客户已确认'))['provisional'])
@@ -111,6 +119,8 @@ class ProductionRouterTests(unittest.TestCase):
             "native_text_editable",
             "final_full_page_visual_check",
             "revision_source_binding",
+            "approved_style_match",
+            "section_page_coverage",
         }
         self.assertEqual(set(result["checks"]["economy"]), expected)
         self.assertEqual(set(result["checks"]["quality"]), expected)

@@ -18,5 +18,9 @@ class RouteIntegrationTests(unittest.TestCase):
                 self.assertEqual(before[key],after[key])
             packet=json.loads((root/'orders/DEMO-ROUTE/context/task_packet.json').read_text(encoding='utf-8'))
             self.assertEqual(packet['production_route']['decision']['effective_unit_price'],'4')
+            guidance=packet['production_route']['decision']['production_guidance']
+            self.assertIn('价格不作为审美上限',guidance['quality_target'])
+            self.assertIn('低边际成本',guidance['value_add'])
+            self.assertIn('approved_style_match',decision['checks']['economy'])
             w.reconcile('DEMO-ROUTE',{'evidence':'追加来源','facts':{'new_scope':{'value':'复杂品牌图表','source':'客户新要求'}}})
             self.assertTrue(w.load('DEMO-ROUTE')['production_route']['needs_recheck'])
