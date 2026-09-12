@@ -1,0 +1,19 @@
+{
+  "evidence": "记录客户原话或具体资料路径",
+  "facts": {
+    "event_time": {
+      "value": "填写已确认的活动时间",
+      "source": "客户文件或原话位置"
+    }
+  },
+  "gaps": [
+    {
+      "id": "G01",
+      "question": "仍需客户提供的内容",
+      "status": "open",
+      "affected_slides": [
+        1
+      ]
+    }
+  ]
+}

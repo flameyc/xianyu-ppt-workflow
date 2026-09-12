@@ -1,0 +1,9 @@
+{
+  "confirmed_at": "2026-09-09",
+  "source": "用户本任务明确要求",
+  "window_minutes": 300,
+  "pause_when_remaining_percent_below": null,
+  "resume_requires_explicit_user_message": false,
+  "automatic_reset_authorized": false,
+  "enforcement": "用户已取消主动额度阈值；仅遵守平台实际限制，不自动购买或重置"
+}

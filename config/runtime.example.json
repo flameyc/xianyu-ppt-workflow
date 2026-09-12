@@ -1,0 +1,7 @@
+{
+  "python": "/absolute/path/to/python",
+  "node": "/absolute/path/to/node",
+  "node_modules": "/absolute/path/to/node_modules",
+  "skill_dir": "/absolute/path/to/presentations",
+  "template_database": "reports/模板盘点_2026-09-06/template_inventory.sqlite"
+}
