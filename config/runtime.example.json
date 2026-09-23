@@ -1,0 +1,7 @@
+{
+  "python": "/absolute/path/to/python",
+  "node": "/absolute/path/to/node",
+  "node_modules": "/absolute/path/to/node_modules",
+  "skill_dir": "/absolute/path/to/presentations",
+  "template_database": "/absolute/path/to/template_inventory.sqlite"
+}
